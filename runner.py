@@ -2,26 +2,30 @@ from session import TrainingSession
 
 class Runner:
     """
-    Represents a runner using the training planner.
+    Represents one runner and their session history.
     """
 
-    def __init__(self, name, age, level):
+    def __init__(self, name: str, age: int, level: str):
         self.name = name
-        self.age = age
+        self.age = int(age)
         self.level = level
-        self.sessions = []
+        self.sessions: list[TrainingSession] = []
 
-    def add_session(self, session):
+    def add_session(self, session: TrainingSession):
         self.sessions.append(session)
 
-    def show_sessions(self):
-        if not self.sessions:
-            print("No training sessions yet.")
-            return
+    def total_distance(self) -> float:
+        return sum(s.distance_km for s in self.sessions)
 
-        print("\nTraining History:")
-        print("------------------")
-        for i, session in enumerate(self.sessions, start=1):
-            print(f"\nSession {i}")
-            session.display_session()
+    def average_pace(self) -> float:
+        total_dist = self.total_distance()
+        if total_dist <= 0:
+            return 0.0
+        total_time = sum(s.duration_min for s in self.sessions)
+        return total_time / total_dist
+
+    def total_load(self) -> float:
+        # Polymorphism in action: calculate_load differs by session type
+        return sum(s.calculate_load() for s in self.sessions)
+
 

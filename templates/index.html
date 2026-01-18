@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Running Training Planner</title>
+</head>
+<body>
+  <h1>Running Training Planner</h1>
+
+  <form method="POST">
+    <label>Distance (km):</label>
+    <input type="number" step="0.1" name="distance" required>
+
+    <label>Duration (min):</label>
+    <input type="number" step="0.1" name="duration" required>
+
+    <label>Type:</label>
+    <select name="type" id="typeSelect">
+      <option value="normal">Normal Run</option>
+      <option value="interval">Interval Run</option>
+    </select>
+
+    <label>Intervals (only for interval):</label>
+    <input type="number" name="intervals" value="0">
+
+    <button type="submit">Add Session</button>
+  </form>
+
+  <p><a href="/plan">View Weekly Plan</a></p>
+
+  <h2>Stats</h2>
+  <ul>
+    <li>Total distance: {{ stats.total_distance }} km</li>
+    <li>Average pace: {{ stats.avg_pace }} min/km</li>
+    <li>Total training load: {{ stats.total_load }}</li>
+  </ul>
+
+  <h2>Training History</h2>
+  <ul>
+    {% for s in sessions %}
+      <li>
+        {{ s.__class__.__name__ }} —
+        {{ s.distance_km }} km,
+        {{ s.duration_min }} min,
+        pace {{ "%.2f"|format(s.pace_min_per_km()) }} min/km,
+        load {{ "%.2f"|format(s.calculate_load()) }}
+        {% if s.__class__.__name__ == "IntervalSession" %}
+          (intervals: {{ s.intervals }})
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
+

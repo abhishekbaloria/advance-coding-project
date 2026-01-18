@@ -1,51 +1,59 @@
 class TrainingSession:
     """
-    Represents a single running training session.
+    Base class for a running session.
+    Demonstrates inheritance + polymorphism via calculate_load().
     """
 
-    def __init__(self, distance_km, duration_min):
-        self.distance_km = distance_km
-        self.duration_min = duration_min
+    def __init__(self, distance_km: float, duration_min: float):
+        self.distance_km = float(distance_km)
+        self.duration_min = float(duration_min)
 
-    def calculate_pace(self):
-        """
-        Calculates pace in minutes per kilometer.
-        """
+    def pace_min_per_km(self) -> float:
+        if self.distance_km <= 0:
+            return 0.0
         return self.duration_min / self.distance_km
 
-    def display_session(self):
-        pace = self.calculate_pace()
-        print(f"Distance: {self.distance_km} km")
-        print(f"Duration: {self.duration_min} min")
-        print(f"Pace: {pace:.2f} min/km")
-class TrainingSession:
-    """
-    Represents a basic running training session.
-    """
+    def calculate_load(self) -> float:
+        """
+        Polymorphic method:
+        Child classes override this to calculate training load differently.
+        """
+        return self.distance_km  # basic load
 
-    def __init__(self, distance_km, duration_min):
-        self.distance_km = distance_km
-        self.duration_min = duration_min
+    def to_dict(self) -> dict:
+        return {
+            "type": self.__class__.__name__,
+            "distance_km": self.distance_km,
+            "duration_min": self.duration_min
+        }
 
-    def calculate_pace(self):
-        return self.duration_min / self.distance_km
-
-    def display_session(self):
-        pace = self.calculate_pace()
-        print(f"Distance: {self.distance_km} km")
-        print(f"Duration: {self.duration_min} min")
-        print(f"Pace: {pace:.2f} min/km")
+    @staticmethod
+    def from_dict(data: dict):
+        t = data.get("type", "TrainingSession")
+        if t == "IntervalSession":
+            return IntervalSession(
+                data["distance_km"],
+                data["duration_min"],
+                data.get("intervals", 0)
+            )
+        return TrainingSession(data["distance_km"], data["duration_min"])
 
 
 class IntervalSession(TrainingSession):
     """
-    Represents an interval training session (inherits from TrainingSession).
+    Inherits from TrainingSession.
+    Adds intervals and overrides calculate_load() (polymorphism).
     """
 
-    def __init__(self, distance_km, duration_min, intervals):
+    def __init__(self, distance_km: float, duration_min: float, intervals: int):
         super().__init__(distance_km, duration_min)
-        self.intervals = intervals
+        self.intervals = int(intervals)
 
-    def display_session(self):
-        super().display_session()
-        print(f"Intervals: {self.intervals}")
+    def calculate_load(self) -> float:
+        # intervals increase intensity
+        return self.distance_km + (self.intervals * 0.5)
+
+    def to_dict(self) -> dict:
+        base = super().to_dict()
+        base["intervals"] = self.intervals
+        return base
