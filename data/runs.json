@@ -4,5 +4,10 @@
     "distance_km": 1.2,
     "duration_min": 67.0,
     "intervals": 60
+  },
+  {
+    "type": "TrainingSession",
+    "distance_km": 0.9999999999999999,
+    "duration_min": 7.0
   }
 ]
