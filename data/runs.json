@@ -3,11 +3,25 @@
     "type": "IntervalSession",
     "distance_km": 1.2,
     "duration_min": 67.0,
+    "session_date": "2026-01-18",
     "intervals": 60
   },
   {
     "type": "TrainingSession",
     "distance_km": 0.9999999999999999,
-    "duration_min": 7.0
+    "duration_min": 7.0,
+    "session_date": "2026-01-18"
+  },
+  {
+    "type": "TrainingSession",
+    "distance_km": 8.0,
+    "duration_min": 60.0,
+    "session_date": "2026-01-18"
+  },
+  {
+    "type": "TrainingSession",
+    "distance_km": 9.0,
+    "duration_min": 62.0,
+    "session_date": "2026-01-18"
   }
 ]
