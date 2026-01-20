@@ -41,10 +41,15 @@ Training Load: Simple training load based on session type (intervals = higher lo
 Persistence: Runs are stored in SQLite and also backed up in JSON
 
 ## Future Enhancements
+
 Add heart-rate / effort based load
+
 More advanced weekly plan (goal-based)
+
 Personal best detection (5K / 10K etc.)
+
 Export to CSV
+
 Better UI (more Strava-like design)
 
 
