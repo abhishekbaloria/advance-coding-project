@@ -7,11 +7,17 @@ You can log your runs, view basic stats, see graphs (distance/pace/load), and ge
 
 ## Features
 Add Runs: Log distance, duration, date, and run type
+
 Normal + Interval Runs: Interval runs include number of intervals
+
 Quick Stats: Total km, average pace, total load, total runs
+
 Filters: Filter by date range and session type
+
 Graphs (Strava-style basics): Distance, pace, load, weekly distance
+
 Training Plan: Auto weekly plan based on runner level
+
 Data Persistence: Saves runs using SQLite + JSON
 
 # How to Run
