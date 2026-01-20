@@ -16,12 +16,16 @@ Data Persistence: Saves runs using SQLite + JSON
 
 # How to Run
 Install Streamlit (and other requirements)
+```bash 
 pip install -r requirements.txt
+   ```
 Save the Code
 Keep all files inside the same folder (don’t remove data/ or JSON files).
 Run the App
 Open terminal, go to the project folder, then run:
-streamlit run streamlit_app.py
+```bash
+  streamlit run streamlit_app.py
+  ```
 
 ## Gameplay (How to Use)
 Add a Run: Fill in date, distance, duration, and type → click Save Run
