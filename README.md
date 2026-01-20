@@ -29,15 +29,25 @@ Open terminal, go to the project folder, then run:
 
 ## Gameplay (How to Use)
 Add a Run: Fill in date, distance, duration, and type → click Save Run
+
 Interval Runs: If you choose interval, also enter intervals
+
 Filters: Pick session types + date range to see only the runs you want
+
 Graphs: Choose a graph from the dropdown to view trends
+
 Weekly Plan: Scroll down to see the weekly plan suggestions
+
 Game Mechanics (App Logic)
+
 Distance (km): Total km for the run
+
 Duration (min): Total minutes for the run
+
 Pace (min/km): Duration ÷ distance
+
 Training Load: Simple training load based on session type (intervals = higher load)
+
 Persistence: Runs are stored in SQLite and also backed up in JSON
 
 ## Future Enhancements
