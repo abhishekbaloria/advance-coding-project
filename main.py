@@ -25,7 +25,7 @@ def main():
             runner.show_sessions()
 
         elif choice == "3":
-            print("Good luck with your runs! 🏃‍♂️")
+            print("Good luck with your runs!")
             break
 
         else:

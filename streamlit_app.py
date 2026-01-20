@@ -21,12 +21,12 @@ from storage_sqlite import init_db, insert_session, load_sessions_from_db
 # basic lit setup 
 st.set_page_config(page_title="Running Training Planner", layout="wide")
 st.title("🏃‍♂️ Running Training Planner")
-st.write("A basic Strava-like tracker for runs (made for my advanced coding project).")
+st.write("tracking and planning your runs made easy!")
 
 
 # runner should not reset on every click so we keep it in sessionstate
 if "runner_data" not in st.session_state:
-    temp_runner = Runner("Abhishek", 22, "Beginner")
+    temp_runner = Runner("Abhishek baloria", 21, "Beginner")
 
     init_db()  # make db table if it doesn't exist
 
@@ -97,7 +97,7 @@ for s in runner.sessions:
 df = pd.DataFrame(runs)
 
 st.markdown("---")
-st.header("🎛️ Filters")
+st.header(" Filters")
 
 if df.empty:
     st.info("No runs saved yet. Add one above.")
@@ -141,7 +141,7 @@ df_f = df[
 
 # STATS 
 st.markdown("---")
-st.header("📊 Quick Stats")
+st.header(" Quick Stats")
 
 x1, x2, x3, x4 = st.columns(4)
 x1.metric("Runs", len(df_f))
@@ -163,7 +163,7 @@ if show_table:
     st.dataframe(df_f, use_container_width=True)
 
 
-# ---------------- GRAPHS ----------------
+# graphs
 st.markdown("---")
 st.header(" Graphs")
 
@@ -208,7 +208,7 @@ else:
         st.line_chart(weekly)
 
 
-# ---------------- PLAN ----------------
+# plan
 st.markdown("---")
 st.header(" Weekly Training Plan")
 

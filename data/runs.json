@@ -3,26 +3,20 @@
     "type": "IntervalSession",
     "distance_km": 1.2,
     "duration_min": 67.0,
-    "session_date": "2026-01-18",
+    "session_date": "2026-01-20",
     "intervals": 60
   },
   {
     "type": "TrainingSession",
     "distance_km": 0.9999999999999999,
     "duration_min": 7.0,
-    "session_date": "2026-01-18"
+    "session_date": "2026-01-20"
   },
   {
     "type": "TrainingSession",
     "distance_km": 8.0,
     "duration_min": 60.0,
-    "session_date": "2026-01-18"
-  },
-  {
-    "type": "TrainingSession",
-    "distance_km": 9.0,
-    "duration_min": 62.0,
-    "session_date": "2026-01-18"
+    "session_date": "2026-01-20"
   },
   {
     "type": "TrainingSession",
@@ -34,24 +28,36 @@
     "type": "TrainingSession",
     "distance_km": 9.0,
     "duration_min": 62.0,
-    "session_date": "2026-01-23"
+    "session_date": "2026-01-20"
   },
   {
     "type": "TrainingSession",
     "distance_km": 9.0,
     "duration_min": 62.0,
-    "session_date": "2026-01-24"
+    "session_date": "2026-01-20"
+  },
+  {
+    "type": "TrainingSession",
+    "distance_km": 9.0,
+    "duration_min": 62.0,
+    "session_date": "2026-01-20"
   },
   {
     "type": "TrainingSession",
     "distance_km": 5.0,
     "duration_min": 32.0,
-    "session_date": "2026-01-28"
+    "session_date": "2026-01-20"
   },
   {
     "type": "TrainingSession",
     "distance_km": 7.0,
     "duration_min": 30.0,
-    "session_date": "2026-01-29"
+    "session_date": "2026-01-20"
+  },
+  {
+    "type": "TrainingSession",
+    "distance_km": 0.0,
+    "duration_min": 0.0,
+    "session_date": "2026-01-30"
   }
 ]
