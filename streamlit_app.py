@@ -28,7 +28,7 @@ from storage_sqlite import init_db, insert_session, load_sessions_from_db
 
 
 # basic streamlit setup
-st.set_page_config(page_title="Running Training Planner", layout="wide")
+
 st.title(" Running Training Planner")
 st.write("Tracking and planning your runs made easy!")
 
