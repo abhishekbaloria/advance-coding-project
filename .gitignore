@@ -1,6 +1,15 @@
 __pycache__/
 *.pyc
+
+# virtual env
 env/
 .venv/
-.DS_Store
+venv/
+
+# database + local data
 data/*.db
+data/*.sqlite
+data/*.sqlite3
+
+# mac
+.DS_Store
