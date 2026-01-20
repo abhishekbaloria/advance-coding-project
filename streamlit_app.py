@@ -2,7 +2,14 @@ import streamlit as st
 import pandas as pd
 import datetime
 
-# try to use matplotlib for graphs, fallback to streamlit charts if not available
+# ✅ page config MUST be first Streamlit call
+st.set_page_config(
+    page_title="Running Training Planner",
+    page_icon="",   # empty removes crown
+    layout="wide"
+)
+
+# try to use matplotlib for graphs, fallback to streamlit charts
 try:
     import importlib
     plt = importlib.import_module("matplotlib.pyplot")
@@ -11,11 +18,13 @@ except Exception:
     plt = None
     HAVE_MPL = False
 
+
 from runner import Runner
 from session import TrainingSession, IntervalSession
 from plan import TrainingPlan
 from storage_json import save_sessions_to_json, load_sessions_from_json
 from storage_sqlite import init_db, insert_session, load_sessions_from_db
+
 
 
 # basic streamlit setup
