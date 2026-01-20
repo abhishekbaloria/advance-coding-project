@@ -23,5 +23,35 @@
     "distance_km": 9.0,
     "duration_min": 62.0,
     "session_date": "2026-01-18"
+  },
+  {
+    "type": "TrainingSession",
+    "distance_km": 9.0,
+    "duration_min": 62.0,
+    "session_date": "2026-01-20"
+  },
+  {
+    "type": "TrainingSession",
+    "distance_km": 9.0,
+    "duration_min": 62.0,
+    "session_date": "2026-01-23"
+  },
+  {
+    "type": "TrainingSession",
+    "distance_km": 9.0,
+    "duration_min": 62.0,
+    "session_date": "2026-01-24"
+  },
+  {
+    "type": "TrainingSession",
+    "distance_km": 5.0,
+    "duration_min": 32.0,
+    "session_date": "2026-01-28"
+  },
+  {
+    "type": "TrainingSession",
+    "distance_km": 7.0,
+    "duration_min": 30.0,
+    "session_date": "2026-01-29"
   }
 ]
