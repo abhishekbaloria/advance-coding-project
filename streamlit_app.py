@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime
 
-# try to import matplotlib, otherwise fall back to streamlit charts
+# matplotlib for chart import 
 try:
     import importlib
     plt = importlib.import_module("matplotlib.pyplot")
@@ -18,19 +18,19 @@ from storage_json import save_sessions_to_json, load_sessions_from_json
 from storage_sqlite import init_db, insert_session, load_sessions_from_db
 
 
-# basic page stuff
+# basic lit setup 
 st.set_page_config(page_title="Running Training Planner", layout="wide")
 st.title("🏃‍♂️ Running Training Planner")
 st.write("A basic Strava-like tracker for runs (made for my advanced coding project).")
 
 
-# runner should not reset on every click so we keep it in session_state
+# runner should not reset on every click so we keep it in sessionstate
 if "runner_data" not in st.session_state:
     temp_runner = Runner("Abhishek", 22, "Beginner")
 
     init_db()  # make db table if it doesn't exist
 
-    # try loading from database first, if empty then use json
+    # for session loading 
     from_db = load_sessions_from_db()
     if from_db:
         temp_runner.sessions = from_db
@@ -42,7 +42,7 @@ if "runner_data" not in st.session_state:
 runner = st.session_state.runner_data
 
 
-# ---------------- ADD RUN ----------------
+# add run button 
 st.markdown("---")
 st.header("➕ Add a Run")
 
@@ -74,14 +74,14 @@ if st.button("Save Run"):
 
     runner.add_session(new_run)
 
-    # save both (course requirement)
+    # save option it will save all the data 
     insert_session(new_run)
     save_sessions_to_json(runner.sessions)
 
-    st.success("Saved ✅")
+    st.success("Saved ")
 
 
-# ---------------- MAKE DATAFRAME ----------------
+# framedata 
 runs = []
 for s in runner.sessions:
     runs.append({
@@ -103,10 +103,10 @@ if df.empty:
     st.info("No runs saved yet. Add one above.")
     st.stop()
 
-# convert date column safely (if something is missing, make it today's date)
+# if something is missing, make it today's date
 df["date"] = pd.to_datetime(df["date"], errors="coerce")
 
-# if any date is invalid/missing -> NaT, fill it with today
+# if any date ia missing or invalid it will fill it with todays date 
 df["date"] = df["date"].fillna(pd.Timestamp.today())
 
 df = df.sort_values("date")
@@ -139,7 +139,7 @@ df_f = df[
 ].copy()
 
 
-# ---------------- STATS ----------------
+# STATS 
 st.markdown("---")
 st.header("📊 Quick Stats")
 
@@ -156,16 +156,16 @@ x3.metric("Avg pace", f"{avg_pace:.2f} min/km")
 x4.metric("Total load", f"{df_f['load'].sum():.2f}")
 
 
-# ---------------- TABLE ----------------
+# TABLE
 if show_table:
     st.markdown("---")
-    st.header("📁 Run History")
+    st.header(" Run History")
     st.dataframe(df_f, use_container_width=True)
 
 
 # ---------------- GRAPHS ----------------
 st.markdown("---")
-st.header("📈 Graphs")
+st.header(" Graphs")
 
 graph = st.selectbox(
     "Pick a graph",
@@ -196,7 +196,7 @@ if HAVE_MPL:
     ax.tick_params(axis="x", rotation=25)
     st.pyplot(fig)
 else:
-    # fallback to Streamlit's native charting when matplotlib isn't installed
+    # graph making 
     if graph == "Distance over time":
         st.line_chart(df_f.set_index("date")["distance_km"])
     elif graph == "Pace over time":
@@ -210,7 +210,7 @@ else:
 
 # ---------------- PLAN ----------------
 st.markdown("---")
-st.header("📅 Weekly Training Plan")
+st.header(" Weekly Training Plan")
 
 weekly_plan = TrainingPlan(runner.level).generate_week()
 for line in weekly_plan:
